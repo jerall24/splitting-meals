@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.js": "/splitting-meals/static/js/main.f6f79f05.chunk.js",
-    "main.js.map": "/splitting-meals/static/js/main.f6f79f05.chunk.js.map",
-    "runtime-main.js": "/splitting-meals/static/js/runtime-main.55f0b397.js",
-    "runtime-main.js.map": "/splitting-meals/static/js/runtime-main.55f0b397.js.map",
-    "static/js/2.8afe576d.chunk.js": "/splitting-meals/static/js/2.8afe576d.chunk.js",
-    "static/js/2.8afe576d.chunk.js.map": "/splitting-meals/static/js/2.8afe576d.chunk.js.map",
+    "main.css": "/splitting-meals/static/css/main.c5cc7317.chunk.css",
+    "main.js": "/splitting-meals/static/js/main.52d8cdaa.chunk.js",
+    "main.js.map": "/splitting-meals/static/js/main.52d8cdaa.chunk.js.map",
+    "runtime-main.js": "/splitting-meals/static/js/runtime-main.96cbadbd.js",
+    "runtime-main.js.map": "/splitting-meals/static/js/runtime-main.96cbadbd.js.map",
+    "static/js/2.27fbeba0.chunk.js": "/splitting-meals/static/js/2.27fbeba0.chunk.js",
+    "static/js/2.27fbeba0.chunk.js.map": "/splitting-meals/static/js/2.27fbeba0.chunk.js.map",
     "index.html": "/splitting-meals/index.html",
-    "static/js/2.8afe576d.chunk.js.LICENSE.txt": "/splitting-meals/static/js/2.8afe576d.chunk.js.LICENSE.txt"
+    "static/css/main.c5cc7317.chunk.css.map": "/splitting-meals/static/css/main.c5cc7317.chunk.css.map",
+    "static/js/2.27fbeba0.chunk.js.LICENSE.txt": "/splitting-meals/static/js/2.27fbeba0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.55f0b397.js",
-    "static/js/2.8afe576d.chunk.js",
-    "static/js/main.f6f79f05.chunk.js"
+    "static/js/runtime-main.96cbadbd.js",
+    "static/js/2.27fbeba0.chunk.js",
+    "static/css/main.c5cc7317.chunk.css",
+    "static/js/main.52d8cdaa.chunk.js"
   ]
 }
