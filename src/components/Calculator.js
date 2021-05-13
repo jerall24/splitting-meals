@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './Calculator.css'
+
 //https://codepen.io/chris__sev/pen/jZmpwx - format and css
 //eval function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
 
 
 //TODO: Make text smaller
-//connect to person
 
 const Calculator = ({ debouncedSum, setDebouncedSum }) => {
   const [expression, setExpression] = useState(debouncedSum);
@@ -51,52 +50,60 @@ const Calculator = ({ debouncedSum, setDebouncedSum }) => {
     setDebouncedSum(finalAmount);
   }, [finalAmount])
 
+  const border = {
+    border: "dotted solid",
+    borderWidth: "thin"
+  }
+
   return (
     <div className="ui container-fluid segment">
-      <div className="calculator">
-
-        <input
-          type="text"
-          value={expression}
-          readOnly
-        />
-
-        <div className="calculator-buttons">
-          <button onClick={() => setExpression("")} className="calc-button is-clear">C</button>
-          <button onClick={() => setExpression(expression.slice(0, expression.length-1))} className="calc-button">
-            <i className="ui icon backward"></i>
-          </button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">/</button>
-
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">7</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">8</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">9</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">*</button>
-
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">4</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">5</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">6</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">-</button>
-
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">1</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">2</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">3</button>
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button">+</button>
-
-          <button onClick={(e) => setExpression(expression + e.target.textContent)} className="calc-button is-zero">0</button>
-          <button
-            onClick={() => {
-              cleanUp(expression);
-              setFinalAmount(expression === "" ? 0 : eval(expression).toFixed(2));
-              setDebouncedSum(finalAmount);
-              }
-            }
-            className="calc-button is-equals">
-            <i className="ui icon check"></i>
-          </button>
+      <div className="ui centered grid">
+        <div className="ui sixteen wide column">
+          <div className="ui right fluid labeled input">
+            <label htmlFor="amount" className="ui label">$</label>
+            <input
+              type="text"
+              value={expression}
+              readOnly/>
+          </div>
         </div>
 
+        <div style={border} onClick={() => setExpression("")} className="ui center aligned eight wide blue column">C</div>
+        <div style={border} onClick={() => setExpression(expression.slice(0, expression.length-1))} className="ui center aligned four wide column red">
+            <i className="ui icon backward"></i>
+        </div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column grey">/</div>
+
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">7</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">8</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">9</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column grey">*</div>
+
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">4</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">5</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">6</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column grey">-</div>
+
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">1</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">2</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">3</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column grey">+</div>
+
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned eight wide column ">0</div>
+        <div style={border} onClick={(e) => setExpression(expression + e.target.textContent)} className="ui center aligned four wide column">.</div>
+        <div
+          style={border}
+          onClick={() => {
+            cleanUp(expression);
+            setFinalAmount(expression === "" ? 0 : eval(expression).toFixed(2));
+            setDebouncedSum(finalAmount);
+            }
+          }
+          className="ui center aligned four wide column green">
+            <i className="ui icon check"></i>
+          </div>
       </div>
+
     </div>
   );
 };

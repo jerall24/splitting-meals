@@ -58,9 +58,9 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
             onChange={e => {setSumFunction(e.target.value); setSentFromCalc(false)}}
           />
           {/* idk fix this it's not showing the Modal*/}
-            <div onClick={toggle} className="ui label button">
+            <button onClick={toggle} className="ui label button">
               <i className="calculator icon"></i>
-            </div>
+            </button>
             <Modal
               isShowing={isShowing}
               hide={toggle}
