@@ -26,7 +26,6 @@ const Totals = ({ preTotal, setPreTotal, postTotal, setPostTotal, missingAmount 
             value={preTotal}
             onChange={e => setPreTotal(e.target.value)}
             type="number"
-            pattern="[0-9]*"
             placeholder="0"
           />
           {showBadTotalMessage ? <div className="ui pointing red basic label fluid">
@@ -39,14 +38,13 @@ const Totals = ({ preTotal, setPreTotal, postTotal, setPostTotal, missingAmount 
             value={postTotal}
             onChange={e => setPostTotal(e.target.value)}
             type="number"
-            pattern="[0-9]*"
             placeholder="0"
           />
         </div>
         <div className="field">
           <label>Missing Amount</label>
           <input
-            value={missingAmount}
+            value={missingAmount.toFixed(2)}
             type="number"
             readOnly
           />

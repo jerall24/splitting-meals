@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Totals from './components/Totals'
-import GroupList from './components/GroupList'
+import Totals from './components/Totals';
+import GroupList from './components/GroupList';
 
 const App = () => {
   const [preTotal, setPreTotal] = useState("");

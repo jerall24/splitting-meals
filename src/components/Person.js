@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Calculator from './Calculator';
+import Modal from "./Modal";
+import useModal from './useModal';
+import './App.css';
 
 //add delete button and edit button
 //show calculator: https://medium.com/@nitinpatel_20236/how-to-build-a-simple-calculator-application-with-react-js-bc10a4568bbd
@@ -8,6 +12,8 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
   const [rawSum, setRawSum] = useState("");
   const [owedSum, setOwedSum] = useState(0);
   const [debouncedSum, setDebouncedSum] = useState(rawSum);
+  const {isShowing, toggle} = useModal();
+  const [sentFromCalc, setSentFromCalc] = useState(false);
 
   const removePerson = () => {
     const p = people.slice();
@@ -49,11 +55,19 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
             value={sum}
             className="ui fluid"
             placeholder=""
-            onChange={e => setSumFunction(e.target.value)}
+            onChange={e => {setSumFunction(e.target.value); setSentFromCalc(false)}}
           />
-            <div className="ui label button">
+          {/* idk fix this it's not showing the Modal*/}
+            <div onClick={toggle} className="ui label button">
               <i className="calculator icon"></i>
             </div>
+            <Modal
+              isShowing={isShowing}
+              hide={toggle}
+              setDebouncedSum={setDebouncedSum}
+              debouncedSum={debouncedSum}
+              setSentFromCalc={setSentFromCalc}
+            />
         </div>
       </td>
     );
@@ -68,7 +82,7 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
         </div>
         </h5>
       </td>
-      {showAmount(rawSum, setRawSum)}
+      {sentFromCalc ? showAmount(debouncedSum, setRawSum) : showAmount(rawSum, setRawSum)}
       <td className="collapsing">
         <div className="ui fluid input">
           <input
