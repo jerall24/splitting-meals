@@ -25,7 +25,7 @@ const Shared = ( { shared, setShared }) => {
           Shared
         </td>
         <td className="">
-          <div className="ui fluid mini action input">
+          <div className="ui fluid mini input">
             <input
               type="text"
               pattern="[0-9]*"
@@ -33,9 +33,6 @@ const Shared = ( { shared, setShared }) => {
               className="ui fluid"
               onChange={e => setRawShared(e.target.value)}
             />
-              <div className="ui label button">
-                <i className="calculator icon"></i>
-              </div>
           </div>
         </td>
         <td>
