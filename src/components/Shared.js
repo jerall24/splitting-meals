@@ -25,7 +25,7 @@ const Shared = ( { shared, setShared }) => {
           Shared
         </td>
         <td className="">
-          <div className="ui fluid action input">
+          <div className="ui fluid mini action input">
             <input
               type="text"
               pattern="[0-9]*"

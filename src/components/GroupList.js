@@ -53,7 +53,6 @@ const GroupList = ({ peopleAmount, setPeopleAmount, preTotal, postTotal }) => {
               <th>Person</th>
               <th>Total</th>
               <th>Owed</th>
-              <th></th>
             </tr>
           </thead>
           <Shared shared={shared} setShared={setShared}/>
@@ -63,7 +62,7 @@ const GroupList = ({ peopleAmount, setPeopleAmount, preTotal, postTotal }) => {
         </table>
         <div className="ui fluid buttons">
           <button
-            onClick={() => {setPeople([...people, {name: `P${countPeople}`, raw: 0}])}}
+            onClick={() => {setPeople([...people, {name: `Person ${countPeople}`, raw: 0}])}}
             className="ui positive button"
             >Add Person
           </button>

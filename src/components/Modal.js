@@ -8,15 +8,15 @@ const Modal = ({ isShowing, hide, debouncedSum, setDebouncedSum, setSentFromCalc
     <div className="modal-overlay" />
       <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
         <div className="modal">
-          <div className="modal-header">
-            <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={() => {hide(); setSentFromCalc(true);}}>
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
           <Calculator
             setDebouncedSum={setDebouncedSum}
             debouncedSum={debouncedSum}
           />
+          <div className="modal-header">
+            <button className="ui fluid positive button" data-dismiss="modal" aria-label="Close" onClick={() => {hide(); setSentFromCalc(true)}}>
+              Submit/Close
+            </button>
+          </div>
         </div>
       </div>
   </React.Fragment>, document.body) : null;

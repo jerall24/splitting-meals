@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 
 
 //TODO: Make text smaller
+// if press submit twice, close out of Modal
 
 const Calculator = ({ debouncedSum, setDebouncedSum }) => {
   const [expression, setExpression] = useState(debouncedSum);
@@ -99,9 +100,7 @@ const Calculator = ({ debouncedSum, setDebouncedSum }) => {
             setDebouncedSum(finalAmount);
             }
           }
-          className="ui center aligned four wide column green">
-            <i className="ui icon check"></i>
-          </div>
+          className="ui center aligned four wide column green">=</div>
       </div>
 
     </div>

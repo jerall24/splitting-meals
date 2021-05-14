@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Calculator from './Calculator';
 import Modal from "./Modal";
 import useModal from './useModal';
 import './App.css';
 
-//add delete button and edit button
+//add edit button
 //show calculator: https://medium.com/@nitinpatel_20236/how-to-build-a-simple-calculator-application-with-react-js-bc10a4568bbd
 // add a personName or rename this to PersonRow and make a person file
+//TODO: fix sizing
 
 const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared }) => {
   const [rawSum, setRawSum] = useState("");
@@ -14,12 +14,31 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
   const [debouncedSum, setDebouncedSum] = useState(rawSum);
   const {isShowing, toggle} = useModal();
   const [sentFromCalc, setSentFromCalc] = useState(false);
+  const [personName, setPersonName] = useState(name);
+  const [debouncedName, setDebouncedName] = useState(personName);
 
   const removePerson = () => {
     const p = people.slice();
     p.splice(index, 1);
     setPeople(p);
   };
+
+  useEffect(() => {
+    const nameTimerId = setTimeout(() => {
+      setDebouncedName(personName);
+    }, 500);
+
+    return () => {
+      clearTimeout(nameTimerId)
+    };
+  }, [personName]);
+
+  useEffect(() => {
+    setPersonName(debouncedName);
+    const p = people.slice();
+    p[index].name = personName;
+    setPeople(p);
+  }, [debouncedName]);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -36,8 +55,6 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
       setOwedSum(0);
     }
     else {
-      console.log("people.length", debouncedSum);
-      //include shared plates here
       setOwedSum((Number(debouncedSum)+shared/(people.length === 0 ? 1 : people.length))/preTotal*postTotal);
       const p = people.slice();
       p[index].raw = Number(debouncedSum);
@@ -48,7 +65,7 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
   const showAmount = (sum, setSumFunction) => {
     return (
       <td className="collapsing">
-        <div className="ui fluid action input">
+        <div className="ui fluid mini action input">
           <input
             type="text"
             pattern="[0-9]*"
@@ -76,26 +93,26 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
   return (
     <tr>
       <td className="collapsing">
-        <h5 className="ui image header">
-        <div className="content">
-          {name}
-        </div>
-        </h5>
-      </td>
-      {sentFromCalc ? showAmount(debouncedSum, setRawSum) : showAmount(rawSum, setRawSum)}
-      <td className="collapsing">
-        <div className="ui fluid input">
+        <div className="ui fluid mini labeled input">
+          <div onClick={removePerson} className="ui red icon label button">
+            <i className="trash alternate icon"></i>
+          </div>
           <input
-            type="number"
-            value={owedSum}
-            readOnly
+            type="text"
+            value={personName}
+            onChange={e => setPersonName(e.target.value)}
           />
         </div>
       </td>
+      {sentFromCalc ? showAmount(debouncedSum, setRawSum) : showAmount(rawSum, setRawSum)}
       <td className="collapsing">
-        <button className="ui mini red icon button" onClick={removePerson}>
-          <i className="trash alternate icon"></i>
-        </button>
+        <div className="ui fluid mini input">
+          <input
+            type="number"
+            value={isNaN(owedSum) ? 0 : owedSum}
+            readOnly
+          />
+        </div>
       </td>
     </tr>
   );
