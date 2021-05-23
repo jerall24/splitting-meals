@@ -77,7 +77,7 @@ const Totals = ({ preTotal, setPreTotal, postTotal, setPostTotal, missingAmount 
         <div className="field">
           <label>Final Total</label>
           <input
-            value={postTotal}
+            value={Number(postTotal).toFixed(2)}
             onChange={e => setPostTotal(e.target.value)}
             type="number"
             placeholder="0"

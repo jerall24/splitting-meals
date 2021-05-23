@@ -109,7 +109,7 @@ const Person = ({ index, name, people, setPeople, preTotal, postTotal, shared })
         <div className="ui fluid mini input">
           <input
             type="number"
-            value={isNaN(owedSum) ? 0 : owedSum}
+            value={isNaN(owedSum) ? 0 : owedSum.toFixed(2)}
             readOnly
           />
         </div>
